@@ -13,10 +13,10 @@ int main()
 	while(temp>0){
 		digit = temp%10;
 		temp/=10;
-		if(temp<0 && digit==9)  //if the first digit is 9 then we cannot inc=vert it because else the no. of digits will reduce
+		if(temp<=0 && digit==9)  //if the first digit is 9 then we cannot invert it because else the no. of digits will reduce
 			result+=digit*pow(10,i);
 		else{
-			digit = max(digit, 9-digit);
+			digit = min(digit, 9-digit);
 			result+=digit*pow(10,i);
 			i++;
 		}
