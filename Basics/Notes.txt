@@ -1,0 +1,24 @@
+Q. Pythogoran Triplet
+three sides can be represented using (m^2 - n^2, 2mn, m^2 + n^2)
+where m^2 + n^2 is the largest no. that means it represent hypoteneus.
+So, one of 2mn and m^2-n^2 will pe given us as input. If the given no. is odd then we are sure that it m^2-n^2. 
+
+If it is even then we will map it to 2mn.
+Given no. is N then 2mn = N
+		    mn = N/2
+		    m = N/2 and n = 1
+Therefore, if N is even three nos will be
+((N/2)^2 - 1); (2*(N/2)*1); ((N/2)^2 + 1)
+
+If given no. N is odd then N != 2mn
+		therefore  N = m^2 - n^2
+			  N*1  = (m+n) (m-n)
+			m+n = N ------1.
+			m-n = 1 ------2.
+		Adding 1 and 2
+			2m = N + 1
+			m= (N+1)/2 and n = (N-1)/2
+Therefore if N is odd three nos. will be
+((N+1)/2)^2 - ((N-1)/2)^2 ; 2 * (N-1)/2 * (N+1)/2 ; ((N+1)/2)^2 + ((N-1)/2)^2
+
+			
