@@ -42,7 +42,7 @@ void vectorDemo()
 	cout<<it2 - it<<endl; //displays the count of no. 3 in sorted arrays
 
 	// to sort in reverse order
-	sort(A.begin(), A.end(), f); // f is comapritor function 
+	sort(A.begin(), A.end(), f); // f is comparitor function 
 	for(i=A.begin(); i!=A.end(); i++)
 		cout<<*i<<" ";
 	cout<<endl;
