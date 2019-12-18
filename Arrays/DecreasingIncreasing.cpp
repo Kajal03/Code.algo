@@ -19,7 +19,7 @@ int main()
 	temp=A[0];
 	int i=1;
 
-	while(temp>A[i]){ // loop untill A[i]> A[i+1]
+	while(temp<A[i]){ // loop untill A[i]> A[i+1]
 		temp=A[i];
 		i++;
 	}
