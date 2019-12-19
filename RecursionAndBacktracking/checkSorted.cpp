@@ -23,11 +23,13 @@ int main()
 
 	bool result = isSorted(A,n);
 
+	cout<<result;
+/*
 	if(result==true)
 		cout<<"Array is sorted";
 
 	else 
 	cout<<"Array is not sorted";
-
+*/
 	return 0;
 }
