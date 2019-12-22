@@ -12,7 +12,7 @@ int main()
 
 	cin>>key;
 	i=0;j=columns-1;   //start from top right corner
-	while(i<rows && columns>0){     //loop until the ker=y is found or you have finished either column or rows
+	while(i<rows && columns>=0){     //loop until the key is found or you have finished either column or rows
 		if(A[i][j]==key){
 			//cout<<"Found at position "<<i<<" "<<j;
 			cout<<"1";
