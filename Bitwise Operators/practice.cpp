@@ -50,7 +50,7 @@ void clearRange(int n,int i, int j){
 	int mask1 = (~0)<<i;
 	int mask2 = ~((~0)<<j);
 	mask1 = mask1 | mask2;
-	n = n& mask1;
+	n = n & mask1;
 	cout<<n;
 }
 
