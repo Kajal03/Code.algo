@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int gcd(int a, int b){
+int gcd(int a, int b){  //O(log(max(a,b)))
 	if(b==0)
 		return a;
 	if(a<b)
