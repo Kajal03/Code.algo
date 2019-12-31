@@ -1,36 +1,35 @@
-//Sieve of eratosthenes
 #include<iostream>
+#include<math.h>
+#include<cstring>
+#define ll unsigned long long
 using namespace std;
-#define ll long long int
-int main()
+int main(){
+ll n,i,count,j;
+bool primes[INT32_MAX];
+memset(primes,true,INT32_MAX);
+cin>>n;
+
+primes[0]=primes[1]=false;
+primes[2]=true;
+for(i=4;i<INT32_MAX;i+=2)
+	primes[i]=false;
+
+for(i=3;i<INT32_MAX;i+=2)
 {
-	ll n,i,j,count;
-	ll primes[10000000]={0};
-	
-	cin>>n;
-
-	// 0 - composite, 1- prime
-	primes[0]=primes[1]=1;
-	primes[2]=0;
-
-    for(i=4;i<=100000000;i+=2) //set all even nos. as composite
-        primes[i]=1;
-    
-	for(i=2;i<=10000000;i++)
-	{	
-		if(!primes[i]){
-			for(j=i*i;j<=n;j+=2*i)
-				primes[j]=1;
-		}
+	for(j=i*i;j<INT32_MAX;j+=i)
+	{
+		primes[j]=false;
 	}
+}
 
-	i=0,count=0;
-	while(count<n){
-		if(primes[i]==0)
-			count++;
+i=0;count=0;
+while(count<n)
+{	
+	if(primes[i]==true)
+		count++;
+	i++;
+}
+cout<<i-1<<endl;
 
-		i++;
-	}
-	cout<<primes[i-1]<<endl;
-	
+return 0;
 }
