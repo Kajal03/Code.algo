@@ -1,21 +1,20 @@
-//binary search
-
 #include<iostream>
+#include<vector>
+#define ll long long
 using namespace std;
 
-int binarySearch(int A[], int end, int key){
-	
-	while(start<=end){
-		int mid = (start + end)/2;
-
-		if(key==A[mid])
+ll binarySearch(vector<ll> A, ll n, ll target)
+{
+	ll start=0,end=n-1,mid;
+	while(start<=end)
+	{
+		mid = (start+end)/2;
+		if(A[mid]==target)
 			return mid;
-
-		if(key<A[mid])
+		if(A[mid]<target)
+			start=mid+1;
+		if(A[mid]>target)
 			end = mid-1;
-
-		else
-			start = mid+1;
 	}
 	return -1;
 	
@@ -23,13 +22,16 @@ int binarySearch(int A[], int end, int key){
 
 int main()
 {
-	int A[100],n,i,key;
-	cin>>n;
-	for(i=0;i<n;i++)
-		cin>>A[i];
-
-	cin>>key;
-	int index = binarySearch(A,n-1,key);
-
-	cout<<index;
+ll n,i,temp,target;
+vector<ll> input;
+cin>>n;
+for(i=0;i<n;i++)
+{
+cin>>temp;
+input.push_back(temp);
 }
+cin>>target;
+temp = binarySearch(input,n,target);
+cout<<temp;
+}
+
