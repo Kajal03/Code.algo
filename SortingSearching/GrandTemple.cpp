@@ -1,3 +1,20 @@
+/*A religious king wants to build the largest temple in his kingdom . To build the largest temple he needs to find the area of the largest suitable land . Given co-ordinates which denotes rivers flowing through the point horizontally as well as vertically , find the largest area possible to make the grand temple.
+Input:
+An integer n denoting number of co-ordinates followed by n co-ordinates
+
+Output Format
+Largest possible area to build the grand temple
+
+Sample Input
+3
+1 1
+2 4
+5 2
+Sample Output
+2
+
+*/
+
 #include<iostream>
 #include<algorithm>
 #include<vector>
@@ -17,13 +34,13 @@ int main()
 	sort(Y.begin(),Y.end());
 	for(i=0;i<n-1;i++)
 	{
-		if(X[i+1]-X[i]>max_X)
-			max_X = X[i+1]-X[i];
+		if(X[i+1]-X[i]-1>max_X)
+			max_X = X[i+1]-X[i]-1;
 		
-		if(Y[i+1]-Y[i]>max_Y)
-			max_Y = Y[i+1]-Y[i];
+		if(Y[i+1]-Y[i]-1>max_Y)
+			max_Y = Y[i+1]-Y[i]-1;
 		
 	}
-	cout<<max_X*max_Y<<endl;
+	cout<<(max_X)*(max_Y)<<endl;
 
 }
