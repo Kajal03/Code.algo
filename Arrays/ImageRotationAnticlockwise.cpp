@@ -4,8 +4,9 @@
 using namespace std;
 int main()
 {
-	int rows, columns, A[100][100], i, j, k, temp;
-	cin>>rows>>columns;
+	int rows, columns, A[1002][1002], i, j, k, temp;
+	cin>>rows;
+	columns=rows;
 
 	//Input
 	for(i=0;i<rows;i++)

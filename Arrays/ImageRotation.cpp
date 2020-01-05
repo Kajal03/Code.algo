@@ -2,8 +2,9 @@
 using namespace std;
 int main()
 {
-	int rows,columns, input[100][100], output[100][100], i,j;
-	cin>>rows>>columns;
+	int rows,columns, input[1002][1002], output[1002][1002], i,j;
+	cin>>rows;
+	columns=rows;
 	for(i=0;i<rows;i++)
 		for(j=0;j<columns;j++)
 			cin>>input[i][j];
