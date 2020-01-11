@@ -1,18 +1,21 @@
-#include<ostream>
+#include<iostream>
+#include<vector>
+#define ll long long
 using namespace std;
 
-int foundAt(int *A, int n, int target,int i=0)
+ll foundAt(vector<ll> A, ll n, ll target)
 {
-	if(n==1 && A[0]!=target)
+	if(n==-1)
 		return -1;
-	else if(n==1 && A[0]==target)
+	if(A[n]==target)
 		return n;
+	return foundAt(A,n-1,target);
 }
 
 int main()
 {
-	int n,temp,i,result,target;
-	vector<int> A;
+	ll n,temp,i,result,target;
+	vector<ll> A;
 	cin>>n;
 	for(i=0;i<n;i++)
 	{
@@ -20,8 +23,8 @@ int main()
 		A.push_back(temp);
 	}
 	cin>>target;
-	result = foundAt(A,n,target);
-	cout<<result;
+	result = foundAt(A,n-1,target);
+	cout<<result<<endl;
 
 }
 

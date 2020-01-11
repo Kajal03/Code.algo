@@ -1,9 +1,10 @@
 #include<iostream>
+#define ll long long
 using namespace std;
 
-void merge(int a[], int start,int end)
+void merge(ll a[], ll start,ll end)
 {
-	int k=start,temp[100],i=start,mid = (start+end)/2,j=mid+1;
+	ll k=start,temp[100],i=start,mid = (start+end)/2,j=mid+1;
 	while(i<=mid && j<=end)
 	{
 		if(a[i]<a[j])
@@ -21,12 +22,12 @@ void merge(int a[], int start,int end)
 
 }
 
-void mergeSort(int a[], int start, int end)
+void mergeSort(ll a[], ll start, ll end)
 {
 	if(start==end)
 		return;
 	
-	int mid = (start+end)/2;
+	ll mid = (start+end)/2;
 
 	mergeSort(a,start,mid);
 	mergeSort(a,mid+1,end);
@@ -35,9 +36,13 @@ void mergeSort(int a[], int start, int end)
 
 int main()
 {
-int a[]={6,3,8,1,9,0,-2,7},n=sizeof(a)/sizeof(int);
+ll n;
+cin>>n;
+ll a[n];
+for(ll i=0;i<n;i++)
+	cin>>a[i];
 mergeSort(a,0,n-1);
-for(int i=0;i<n;i++)
+for(ll i=0;i<n;i++)
 cout<<a[i]<<" ";
 cout<<endl;
 }

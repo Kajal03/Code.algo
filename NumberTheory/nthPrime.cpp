@@ -1,31 +1,34 @@
 #include<iostream>
 #include<math.h>
 #include<cstring>
+#include<bitset>
+#define M INT32_MAX
 #define ll unsigned long long
 using namespace std;
 int main(){
 ll n,i,count,j;
-bool primes[INT32_MAX];
-memset(primes,true,INT32_MAX);
+bitset <M> primes;
+for(i=0;i<M;i++)
+primes[i]=1;
 cin>>n;
 
-primes[0]=primes[1]=false;
-primes[2]=true;
-for(i=4;i<INT32_MAX;i+=2)
-	primes[i]=false;
+primes[0]=primes[1]=0;
+primes[2]=1;
+for(i=4;i<M;i+=2)
+	primes[i]=0;
 
-for(i=3;i<INT32_MAX;i+=2)
+for(i=3;i<M;i+=2)
 {
-	for(j=i*i;j<INT32_MAX;j+=i)
+	for(j=i*i;j<M;j+=i)
 	{
-		primes[j]=false;
+		primes[j]=0;
 	}
 }
 
 i=0;count=0;
 while(count<n)
 {	
-	if(primes[i]==true)
+	if(primes[i]==1)
 		count++;
 	i++;
 }

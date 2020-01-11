@@ -61,7 +61,7 @@ void print(node* head)
 
 node* even_after_odd(node*&head)
 {
-	node*even, *odd, *evenH, *oddH;
+	node*even, *odd, *evenH=NULL, *oddH=NULL;
 	int e=0,o=0;
 	while(head!=NULL)
 	{
@@ -97,7 +97,10 @@ node* even_after_odd(node*&head)
 		head=head->next;
 	}
 	even->next=NULL;
-	odd->next=evenH;
+	if(oddH==NULL)
+		return evenH;
+	else
+		odd->next=evenH;
 	return oddH;
 
 }

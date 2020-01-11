@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-
 class node
 {
     public:
@@ -33,9 +32,7 @@ void insertAtTail(node* &head,int data)
 {
 	if(head==NULL)
 	{
-		//cout<<"done1";		
-		insertAtHead(head,data);
-		
+		insertAtHead(head,data);	
 		return;
 	}
 
@@ -177,7 +174,7 @@ ostream & operator<<(ostream &os, node* head)
 	while(head!=NULL)
 	{
 		if(head->next!=NULL)
-			cout<<head->data<<" -> ";
+			cout<<head->data<<" ";
 		else 
 			cout<<head->data<<endl;
 		head= head->next;
@@ -206,7 +203,7 @@ bool searchIterative(node * head, int key)
 	return false;
 }
 
-void reverse(node *&head)
+node* reverse(node *&head)
 {
 	node* current = head;
 	node* previous = NULL;
@@ -220,6 +217,7 @@ void reverse(node *&head)
 		current=Next;
 	}
 	head = previous;
+	return head;
 }
 
 node* reverseRec(node* head)
@@ -301,42 +299,3 @@ node* mergeSort(node* &a)
 }
 
 
-int main()
-{
-	node *head=NULL;
-	
-/*	insertAtTail(head,2);
-	insertAtHead(head,5);
-	insertAtHead(head,6);
-	insertAtHead(head,7);
-	insertMiddle(head,8,3);
-	cout<<head;
-
-	cout<<len(head);
-	deleteAtTail(head);
-	print(head);
-	deleteAtHead(head);
-	print(head);
-	deleteInMiddle(head,2);
-	print(head);
-
-	cin>>head;
-	cout<<head;
-	searchIterative(head,2)?cout<<"Yes\n": cout<<"No\n";
-	searchRecursive(head,2)?cout<<"Yes\n": cout<<"No\n";
-
-	cin>>head;
-	reverse(head);
-	cout<<head;
-
-	head = reverseRec(head);
-	cout<<head;
-	midPoint(head);
-*/
-	node *head2=NULL;
-	cin>>head;
-	//cin>>head2;
-	head = mergeSort(head);
-	cout<<head;
-	//KthNodeFromEnd(head,3);	
-}
