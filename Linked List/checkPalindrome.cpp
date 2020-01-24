@@ -13,6 +13,20 @@ int main()
 	}
 
 	int l = len(head);
+	
+	if(l==1)
+	{
+		return true;
+	}
+	
+	if(l==2)
+	{
+		if(head->data==head->next->data)
+			return true;
+		else
+			return false;
+	}
+	
 
 	node* head2=head;
 
