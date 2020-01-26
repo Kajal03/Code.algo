@@ -10,14 +10,45 @@ bool checkBalanced(string input)
 	{
 		if(input[i]=='(')
 			s1.push('(');
+		else if(input[i]=='[')
+			s1.push('[');
+		else if(input[i]=='{')
+			s1.push('{');
 		if(input[i]==')')
 		{
-			if(s1.size()==0 || s.top()!='(')
-				return false;
-			else
+			if(s1.top()=='(')
 			{
 				s1.pop();
 			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		if(input[i]==']')
+		{
+			if(s1.top()=='[')
+			{
+				s1.pop();
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		if(input[i]=='}')
+		{
+			if(s1.top()=='{')
+			{
+				s1.pop();
+			}
+			else
+			{
+				return false;
+			}
+			
 		}
 	}
 	if(s1.size()==0)
