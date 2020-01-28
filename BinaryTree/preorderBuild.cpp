@@ -222,6 +222,33 @@ node* buildBalancedTree(int inputArray[], int start, int end)
 
 }
 
+node* buildTreeFromInorderPreorder(int* inorder, int* preorder, int start, int end)
+{
+	static int indexofPreOrder = 0;
+
+	//Base Case
+	if(start>end)
+		return NULL;
+
+	int i,index;
+	node* newNode = new node(inorder[indexofPreOrder]);
+	for( i = start;i<=end;i++)
+	{
+		if(inorder[i] == preorder[indexofPreOrder])
+		{
+			index=i;
+			break;
+		}
+	}
+	
+	indexofPreOrder++;
+	newNode->left = buildTreeFromInorderPreorder(inorder, preorder, start, index-1);
+	newNode->right = buildTreeFromInorderPreorder(inorder, preorder, index+1, end);
+
+	return newNode;
+	
+}
+
 int main()
 {
 //	node* root = NULL;
@@ -255,12 +282,17 @@ int main()
 
 
 	checkBalanced(root)<0?cout<<"Not balanced\n" : cout<<"Balanced\n";
-*/
+
 	int inputArray[] = {1,2,3,4,5,6,7,8,9};
 	int n= sizeof(inputArray)/sizeof(int);
 
 	node *root = buildBalancedTree(inputArray, 0, n-1);
 
 	BFSiterative(root);
-
+*/
+	int preorder[] = {1,2,3,4,8,5,6,7};
+	int inorder[] = {3,2,8,4,1,6,7,5};
+	int n= sizeof(preorder)/sizeof(int);
+	node* root = buildTreeFromInorderPreorder(inorder, preorder, 0, n-1);
+	BFSiterative(root);
 }
