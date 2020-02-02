@@ -248,12 +248,25 @@ node* buildTreeFromInorderPreorder(int* inorder, int* preorder, int start, int e
 	return newNode;
 	
 }
-
+bool checkBST(node* root, int lower=INT8_MIN, int higher = INT8_MAX)
+{
+	if(root==NULL)
+	{
+		return true;
+	}
+	if(root->data >= lower && root->data <= higher && checkBST(root->left, lower, root->data) && checkBST(root->right, root->data, higher))
+	{
+		return true;
+	}
+	else
+		return false;
+}
+/*
 int main()
 {
 //	node* root = NULL;
 //	root = buildTree();
-/*
+
 	printPreorder(root);
 	cout<<endl;
 	printInorder(root);
@@ -289,10 +302,13 @@ int main()
 	node *root = buildBalancedTree(inputArray, 0, n-1);
 
 	BFSiterative(root);
-*/
+	cout<<endl<<checkBST(root)<<endl;
+
 	int preorder[] = {1,2,3,4,8,5,6,7};
 	int inorder[] = {3,2,8,4,1,6,7,5};
 	int n= sizeof(preorder)/sizeof(int);
 	node* root = buildTreeFromInorderPreorder(inorder, preorder, 0, n-1);
 	BFSiterative(root);
+
 }
+*/
