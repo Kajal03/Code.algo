@@ -11,6 +11,9 @@ Right Child 2* i + 1
 Parent = i/2
 */
 
+/* time complexity of heap sort is O(n log n). But the constants that are ignored in big o natation in heap sort are larger than
+merge sort or quick sort. So, after experimental analysis we conclude that heap sort is slow.*/
+
 #include<iostream>
 #include<vector>
 using namespace std;
