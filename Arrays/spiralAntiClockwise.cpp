@@ -15,11 +15,10 @@ int main()
 	{
 		for(j=0;j<column;j++)
 		{
-			a[i][j]=value;
-			value++;
+			cin>>a[i][j];
 		}
 	}
-
+/*
 	for(i=0;i<row;i++)
 	{
 		for(j=0;j<column;j++)
@@ -28,36 +27,37 @@ int main()
 		}
 		cout<<endl;
 	}
-
+*/
 	while(startRow<=endRow && startCol<=endCol)
 	{
 		for(i=startRow;i<=endRow;i++)
-			cout<<a[i][startCol]<<" ";
+			cout<<a[i][startCol]<<", ";
 		startCol++;
 		
 		if(startCol<=endCol)
 		{
 			for(i=startCol;i<=endCol;i++)
-				cout<<a[endRow][i]<<" ";
-			endRow++;
+				cout<<a[endRow][i]<<", ";
+			endRow--;
 		}
 
 		if(startCol<=endCol)
 		{
 			for(i=endRow;i>=startRow;i--)
-				cout<<a[i][endCol]<<" ";
+				cout<<a[i][endCol]<<", ";
 			endCol--;
 		}
 	
 		if(startCol<=endCol)
 		{
 			for(i=endCol;i>=startCol;i--)
-				cout<<a[startRow][i]<<" ";
+				cout<<a[startRow][i]<<", ";
 			startRow++;
 		}
 		
 	
 	}
+	cout<<"END\n";
 }
 
 

@@ -1,7 +1,0 @@
-gcc -o copy copy.c
-copy in.txt newcopy.txt
-
-gcc program2.c
-./a.out in.txt newcopy.txt
-
-
