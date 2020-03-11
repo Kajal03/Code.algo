@@ -1,4 +1,5 @@
 //Sieve of eratosthenes
+//The Sieve of Eratosthenes uses an extra O(n) memory and its runtime complexity is O(n log log n)
 #include<iostream>
 using namespace std;
 #define ll long long int
