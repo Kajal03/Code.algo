@@ -2,36 +2,37 @@
 #include<stack>
 using namespace std;
 
-void reverse(stack<int> &s1)
+void insertAtBottom(stack<int> &s, int temp)
 {
-	if(s1.empty())
-	{
-		return;
-	}
-
-	int temp = s1.top();
-	s1.pop();
-	reverse(s1);
-	s1.push(temp);
+    if(s.size()==0){
+        s.push(temp);
+        return;
+    }
+    int t = s.top();
+    s.pop();
+    insertAtBottom(s,temp);
+    s.push(t);
+}
+void reverse(stack<int> &s)
+{
+    if(s.size()==1)
+        return;
+    int temp = s.top();
+    s.pop();
+    reverse(s);
+    insertAtBottom(s,temp);
 }
 
 int main()
 {
+    stack<int> s;
+    for(int i=0;i<4;i++)
+        s.push(i);
 
-	int temp;
-	stack<int> s1;
-	for(int i=0;i<4;i++)
-	{
-		cin>>temp;
-		s1.push(temp);
-	}
+    reverse(s);
 
-	reverse(s1);
-
-	for(int i=0;i<4;i++)
-	{
-		temp = s1.top();
-		s1.pop();
-		cout<<temp<<" ";
-	}
+    while(!s.empty()){
+        cout<<s.top()<<" ";
+        s.pop();
+    }
 }
