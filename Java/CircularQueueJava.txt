@@ -1,0 +1,60 @@
+import java.util.*;
+class queue{
+
+    private int size;
+    private int [] queue;
+    private int start, end;
+
+    public queue(int size){
+        this.size = size;
+        queue = new int[size];
+        start = end = -1;
+    }
+
+    public void offer(int element){
+        
+        if((end+1)%size==start)
+            throw new IndexOutOfBoundsException();
+        
+        if(start==-1)
+            start++;
+
+        end = (end+1)%size;
+        queue[end]=element;
+
+    }
+
+    public int poll(){
+        if(start==-1)
+            throw new IndexOutOfBoundsException();
+        int element = queue[start];
+
+        if(start==end)
+            start = end = -1;
+        else
+            start=(start+1)%size;
+        return element;
+    }
+
+    public int peek(){
+        if(start==-1)
+            throw new IndexOutOfBoundsException();
+        return queue[start];
+    }
+
+    public void print(){
+
+        System.out.println("start "+start+" end "+end);
+
+        int i=start;
+        while(true){
+            System.out.print(queue[i]+" ");
+            i=(i+1)%size;
+            if(i==(end+1)%size)
+                break;
+        }
+        System.out.println();  
+    }
+
+}
+

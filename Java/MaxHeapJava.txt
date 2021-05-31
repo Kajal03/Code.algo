@@ -1,0 +1,95 @@
+import java.util.*;
+class Heap {
+
+    private ArrayList<Integer> maxHeap = new ArrayList<Integer>();
+
+    public int getLeftChild(int index){
+        if(((2*index)+1)>=maxHeap.size()){
+            return -1;
+        }
+        return maxHeap.get((2*index)+1);
+    }
+
+    public int getRightChild(int index){
+        if(((2*index)+2)>=maxHeap.size()){
+            return -1;
+        }
+        return maxHeap.get((2*index)+2);
+        
+    }
+
+    public int getParent(int index){
+        if(index<=0){
+            throw new IndexOutOfBoundsException();
+        }
+        return maxHeap.get((index/2));
+    }
+
+    public void insert(int value){
+        maxHeap.add(value);
+        
+        int currIndex = maxHeap.size()-1;
+        while(currIndex>0 && maxHeap.get(currIndex)>getParent(currIndex)){
+            int temp = maxHeap.get(currIndex);
+            maxHeap.set(currIndex, getParent(currIndex));
+            maxHeap.set(currIndex/2,temp);
+            currIndex=currIndex/2;
+        }
+
+        for(int i=0;i<maxHeap.size();i++)
+            System.out.print(maxHeap.get(i)+" ");
+        System.out.println();
+    }
+
+    public void heapify(int index){
+
+        if(index>maxHeap.size()/2)
+            return;
+        
+        int left = getLeftChild(index);
+        int right = (index*2)+1 > maxHeap.size()-1? Integer.MIN_VALUE : getRightChild(index);
+        int cur = maxHeap.get(index);
+
+        if(cur>=left && cur>=right)
+            return;
+
+        if(cur<left && left>right){
+            maxHeap.set(index,left);
+            maxHeap.set(index*2+1,cur);
+            heapify(index*2+1);
+        }
+
+        else{
+            maxHeap.set(index,right);
+            maxHeap.set(index*2+2, cur);
+            heapify(index*2+2);
+        }
+
+    }
+
+    public void delete(){
+
+        int value = maxHeap.get(maxHeap.size()-1);
+        maxHeap.remove(maxHeap.size()-1);
+
+        maxHeap.set(0,value);
+        heapify(0);
+
+    }
+
+};
+
+public class Main{
+    public static void main(String []arg){
+        Heap h = new Heap();
+        h.insert(4);
+        h.insert(14);
+        h.insert(2);
+        h.insert(6);
+        h.delete();
+        h.insert(1);
+    }
+}
+
+
+

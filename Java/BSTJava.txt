@@ -1,0 +1,136 @@
+import java.util.*;
+class Node{
+        Node left, right;
+        int data;
+
+        public Node(int data){
+            this.data = data;
+            left = right = null;
+        }
+    };
+
+class BST{
+    
+    Node root = null;
+
+    public void insert(int data){
+        root = insert(root,data);
+    }
+
+    public Node insert(Node node, int data){
+        if(node==null){
+            node = new Node(data);
+        }
+        else if(node.data<data){
+            node.right = insert(node.right, data);
+            
+        }
+        else 
+            node.left = insert(node.left, data);
+        return node;
+    }
+
+    public void inorder(){
+        inorder(root);
+    }
+
+    public void inorder(Node node){
+        if(node==null)
+            return;
+        inorder(node.left);
+        System.out.print(node.data+" ");
+        inorder(node.right);
+        System.out.println();
+    }
+
+    public void levelOrder(){
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+
+        while(!q.isEmpty()){
+            Node cur = q.peek();
+            q.remove(cur);
+            if(cur==null){
+                if(q.size()!=0){
+                    System.out.println();
+                    q.add(null);
+                    continue;
+                }
+                else
+                    return;
+            }
+            if(cur.left!=null) q.add(cur.left);
+            if(cur.right!=null) q.add(cur.right);
+            System.out.print(cur.data+" ");
+        }
+    }
+
+    public void delete(int data){
+        root = delete(root,data);
+    }
+
+    public Node delete(Node node, int data){
+        if(node==null)
+            return node;
+        if(node.data<data){
+            return delete(node.right,data);
+        }
+        else if(node.data>data){
+            return delete(node.left, data);
+        }
+        
+        if(node.left==null && node.right==null){
+            node=null;
+        }
+        else if(node.left==null){
+            Node temp = node;
+            node = node.right;
+        }
+        else if(node.right==null){
+            Node temp = node;
+            node = node.left;
+        }
+        else{
+            Node temp = findMin(node.right);
+            node.data = temp.data;
+            node.right = delete(node.right,temp.data);
+        }
+        return node;
+
+    }
+
+    public Node findMin(Node node){
+        while(node.left!=null)
+        {
+            node = node.left;
+        }
+        return node;
+    }
+
+};
+
+public class Main {
+    public static void main(String args[]) {
+
+        BST bst = new BST();
+        bst.insert(7);
+        bst.insert(2);
+        bst.insert(6);
+        bst.insert(9);
+        bst.insert(1);
+        bst.insert(-2);
+
+        bst.levelOrder();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        bst.delete(7);
+        bst.levelOrder();
+    }
+}
+
+
+
+
